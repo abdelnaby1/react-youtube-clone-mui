@@ -6,12 +6,22 @@ import CardMedia from '@mui/material/CardMedia';
 import Box from '@mui/material/Box';
 import CheckCircle from '@mui/icons-material/CheckCircle';
 import { demoProfilePicture } from '../utils/constants'
-function ChannelCard({ channel }) {
-    console.log(channel);
+function ChannelCard({ channel, marginTop }) {
     return (
         <Box
-            sx={{ height: '326pd', margin: 'auto', boxShadow: 'none', borderRadius: '20px', display: 'center', justifyContent: 'center', alignItems: 'center', width: { md: '320px', xs: '356px' } }}
+            sx={{
+                height: '326pd',
+                margin: 'auto',
+                boxShadow: 'none',
+                borderRadius: '20px',
+                display: 'center',
+                justifyContent: 'center',
+                alignItems: 'center',
+                width: { md: '320px', xs: '356px' },
+                marginTop
+            }}
         >
+
             <Link to={`/channel/${channel?.id?.channelId}`}>
                 <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center', color: '#fff' }}>
                     <CardMedia
@@ -21,12 +31,12 @@ function ChannelCard({ channel }) {
                     />
                     <Typography variant='h6'>
                         {channel?.snippet?.title}
-                        <CheckCircle sx={{ fontSize: 14, color: 'gray', ml: 5 }} />
+                        <CheckCircle sx={{ fontSize: 14, color: 'gray', ml: 1 }} />
 
                     </Typography>
-                    {channel?.statistics?.subscriptionCount && (
-                        <Typography>
-                            {parseInt(channel?.statistics?.subscriptionCount)?.toLocaleString()}Subscribers
+                    {channel?.statistics?.subscriberCount && (
+                        <Typography >
+                            {parseInt(channel?.statistics?.subscriberCount)?.toLocaleString()} Subscribers
                         </Typography>
                     )}
                 </CardContent>
